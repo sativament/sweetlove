@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chegue até mim ♡</title>
+
+    <style>
+
+        .botao-vales {
+    display: inline-block;
+
+    margin-top: 25px;
+    padding: 13px 25px;
+
+    background: #a50022;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.botao-vales:hover {
+    background: #c4002f;
+    transform: translateY(-3px);
+}
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #bfe8ff;
+        }
+
+
+        /* =========================
+           JOGO
+        ========================= */
+
+        #jogo {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #9edcff 0%,
+                    #dff6ff 75%,
+                    #dff6ff 100%
+                );
+        }
+
+
+        /* =========================
+           SOL
+        ========================= */
+
+        .sol {
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            top: 50px;
+            right: 100px;
+
+            background: #ffe59a;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 30px rgba(255, 230, 150, 0.8);
+        }
+
+
+        /* =========================
+           NUVENS
+        ========================= */
+
+        .nuvem {
+            position: absolute;
+
+            width: 120px;
+            height: 35px;
+
+            background: white;
+
+            border-radius: 30px;
+
+            opacity: 0.85;
+        }
+
+        .nuvem::before,
+        .nuvem::after {
+            content: "";
+
+            position: absolute;
+
+            background: white;
+
+            border-radius: 50%;
+        }
+
+        .nuvem::before {
+            width: 50px;
+            height: 50px;
+
+            left: 20px;
+            bottom: 10px;
+        }
+
+        .nuvem::after {
+            width: 65px;
+            height: 65px;
+
+            right: 15px;
+            bottom: 5px;
+        }
+
+        .nuvem1 {
+            top: 100px;
+            left: 12%;
+        }
+
+        .nuvem2 {
+            top: 180px;
+            left: 45%;
+
+            transform: scale(0.8);
+        }
+
+        .nuvem3 {
+            top: 70px;
+            left: 70%;
+
+            transform: scale(0.65);
+        }
+
+
+        /* =========================
+           CHÃO
+        ========================= */
+
+        #chao {
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 80px;
+
+            background: #63a65b;
+
+            border-top: 8px solid #3d7437;
+        }
+
+
+        /* =========================
+           PLATAFORMAS
+        ========================= */
+
+        .plataforma {
+
+            position: absolute;
+
+            height: 25px;
+
+            background: #74452c;
+
+            border-top: 7px solid #9c633f;
+
+            border-radius: 5px;
+        }
+
+        #p1 {
+            left: 15%;
+            bottom: 180px;
+            width: 150px;
+        }
+
+        #p2 {
+            left: 38%;
+            bottom: 300px;
+            width: 150px;
+        }
+
+        #p3 {
+            left: 60%;
+            bottom: 190px;
+            width: 150px;
+        }
+
+        #p4 {
+            left: 78%;
+            bottom: 330px;
+            width: 150px;
+        }
+
+
+        /* =========================
+           PERSONAGEM MENINO
+        ========================= */
+
+        #personagem {
+
+            position: absolute;
+
+            left: 70px;
+            bottom: 80px;
+
+            width: 45px;
+            height: 70px;
+
+            z-index: 20;
+
+            transition: transform 0.05s linear;
+        }
+
+
+        /* cabeça */
+
+        .cabeca-menino {
+
+            position: absolute;
+
+            top: 0;
+            left: 8px;
+
+            width: 32px;
+            height: 32px;
+
+            background: #f1c7a5;
+
+            border-radius: 50%;
+
+            z-index: 3;
+        }
+
+
+        /* cabelo ondulado */
+
+        .cabelo-menino {
+
+            position: absolute;
+
+            top: -5px;
+            left: 5px;
+
+            width: 38px;
+            height: 25px;
+
+            background: #111;
+
+            border-radius:
+                50% 50% 35% 35%;
+
+            z-index: 4;
+        }
+
+        .cabelo-menino::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 12px;
+            height: 18px;
+
+            background: #111;
+
+            left: 0;
+            top: 8px;
+
+            border-radius: 50%;
+        }
+
+
+        /* corpo */
+
+        .corpo-menino {
+
+            position: absolute;
+
+            left: 7px;
+            top: 30px;
+
+            width: 32px;
+            height: 30px;
+
+            background: #111;
+
+            border-radius: 8px;
+        }
+
+
+        /* pernas */
+
+        .perna-menino {
+
+            position: absolute;
+
+            top: 57px;
+
+            width: 9px;
+            height: 18px;
+
+            background: #111;
+
+            border-radius: 5px;
+        }
+
+        .perna1 {
+            left: 10px;
+        }
+
+        .perna2 {
+            left: 28px;
+        }
+
+
+        /* =========================
+           PERSONAGEM MENINA
+        ========================= */
+
+        #menina {
+
+            position: absolute;
+
+            right: 50px;
+            bottom: 80px;
+
+            width: 55px;
+            height: 100px;
+
+            z-index: 15;
+        }
+
+
+        /* cabelo longo */
+
+        .cabelo-menina {
+
+            position: absolute;
+
+            top: 0;
+            left: 5px;
+
+            width: 48px;
+            height: 70px;
+
+            background: #111;
+
+            border-radius:
+                50% 50% 35% 35%;
+        }
+
+
+        /* rosto */
+
+        .rosto-menina {
+
+            position: absolute;
+
+            top: 8px;
+            left: 14px;
+
+            width: 30px;
+            height: 30px;
+
+            background: #f1c7a5;
+
+            border-radius: 50%;
+
+            z-index: 2;
+        }
+
+
+        /* roupa */
+
+        .corpo-menina {
+
+            position: absolute;
+
+            top: 38px;
+            left: 10px;
+
+            width: 38px;
+            height: 55px;
+
+            background: #eee;
+
+            border-radius: 10px 10px 5px 5px;
+
+            z-index: 3;
+        }
+
+
+        /* =========================
+           CORAÇÕES
+        ========================= */
+
+        .coracao {
+
+            position: absolute;
+
+            color: #c40028;
+
+            font-size: 24px;
+
+            animation: flutuar 2s infinite ease-in-out;
+
+            z-index: 30;
+        }
+
+        .c1 {
+            left: 20px;
+            top: 25px;
+        }
+
+        .c2 {
+            left: 55px;
+            top: 60px;
+
+            animation-delay: .4s;
+        }
+
+        .c3 {
+            right: 30px;
+            top: 40px;
+
+            animation-delay: .8s;
+        }
+
+
+        @keyframes flutuar {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        /* =========================
+           TÍTULO
+        ========================= */
+
+        .titulo {
+
+            position: absolute;
+
+            top: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: #222;
+
+            text-align: center;
+
+            z-index: 50;
+        }
+
+        .titulo h1 {
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        .titulo p {
+            margin-top: 6px;
+
+            font-size: 13px;
+
+            color: #555;
+        }
+
+
+        /* =========================
+           TELA FINAL
+        ========================= */
+
+        #final {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            background:
+                rgba(255, 240, 245, 0.92);
+
+            z-index: 100;
+        }
+
+
+        #final h2 {
+
+            color: #a50022;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        #final p {
+
+            color: #333;
+
+            font-size: 17px;
+
+            text-align: center;
+
+            max-width: 400px;
+
+            line-height: 1.6;
+        }
+
+
+        /* abraço */
+
+        .abraço {
+
+            position: relative;
+
+            width: 160px;
+            height: 130px;
+
+            margin-bottom: 25px;
+        }
+
+        .abraço .menino-final {
+
+            position: absolute;
+
+            left: 25px;
+            bottom: 0;
+
+            width: 45px;
+            height: 80px;
+
+            background: #111;
+
+            border-radius: 10px;
+        }
+
+        .abraço .menina-final {
+
+            position: absolute;
+
+            right: 25px;
+            bottom: 0;
+
+            width: 45px;
+            height: 90px;
+
+            background: #eee;
+
+            border-radius: 12px;
+        }
+
+        .abraço::after {
+
+            content: "♡";
+
+            position: absolute;
+
+            left: 50%;
+            top: -10px;
+
+            transform: translateX(-50%);
+
+            color: #c40028;
+
+            font-size: 40px;
+
+            animation: pulsar 1s infinite;
+        }
+
+
+        @keyframes pulsar {
+
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+
+        }
+
+
+        /* =========================
+           CONTROLES
+        ========================= */
+
+        .controles {
+
+            position: fixed;
+
+            bottom: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            padding: 10px 18px;
+
+            background: rgba(255,255,255,0.75);
+
+            border-radius: 20px;
+
+            color: #333;
+
+            font-size: 13px;
+
+            z-index: 60;
+        }
+
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .sol {
+                right: 30px;
+            }
+
+            .plataforma {
+                transform: scale(0.8);
+                transform-origin: left;
+            }
+
+            .titulo h1 {
+                font-size: 20px;
+            }
+
+            .controles {
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div id="jogo">
+
+
+    <!-- TÍTULO -->
+
+    <div class="titulo">
+
+        <h1>chegue até mim ♡</h1>
+
+        <p>pule pelas plataformas e venha me encontrar</p>
+
+    </div>
+
+
+    <!-- SOL -->
+
+    <div class="sol"></div>
+
+
+    <!-- NUVENS -->
+
+    <div class="nuvem nuvem1"></div>
+    <div class="nuvem nuvem2"></div>
+    <div class="nuvem nuvem3"></div>
+
+
+    <!-- CORAÇÕES -->
+
+    <div class="coracao c1">♡</div>
+    <div class="coracao c2">♡</div>
+    <div class="coracao c3">♡</div>
+
+
+    <!-- PLATAFORMAS -->
+
+    <div
+        class="plataforma"
+        id="p1">
+    </div>
+
+    <div
+        class="plataforma"
+        id="p2">
+    </div>
+
+    <div
+        class="plataforma"
+        id="p3">
+    </div>
+
+    <div
+        class="plataforma"
+        id="p4">
+    </div>
+
+
+    <!-- CHÃO -->
+
+    <div id="chao"></div>
+
+
+    <!-- MENINO -->
+
+    <div id="personagem">
+
+        <div class="cabelo-menino"></div>
+
+        <div class="cabeca-menino"></div>
+
+        <div class="corpo-menino"></div>
+
+        <div class="perna-menino perna1"></div>
+
+        <div class="perna-menino perna2"></div>
+
+    </div>
+
+
+    <!-- MENINA -->
+
+    <div id="menina">
+
+        <div class="cabelo-menina"></div>
+
+        <div class="rosto-menina"></div>
+
+        <div class="corpo-menina"></div>
+
+    </div>
+
+
+    <!-- CONTROLES -->
+
+    <div class="controles">
+
+        ← → para andar &nbsp; | &nbsp;
+        espaço para pular
+
+    </div>
+
+
+</div>
+
+
+
+<!-- FINAL -->
+
+<div id="final">
+
+    <div class="abraço">
+
+        <div class="menino-final"></div>
+
+        <div class="menina-final"></div>
+
+    </div>
+
+
+   <h2>você conseguiu, pabens!</h2>
+
+<p>
+    agora você desbloqueou algumas recompensas.
+</p>
+
+<a href="vales.html" class="botao-vales">
+    abrir seus vales
+</a>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const personagem =
+    document.getElementById("personagem");
+
+const telaFinal =
+    document.getElementById("final");
+
+const plataformas =
+    document.querySelectorAll(".plataforma");
+
+
+/* =========================
+   POSIÇÃO
+========================= */
+
+let x = 70;
+
+let y = 80;
+
+
+/* =========================
+   FÍSICA
+========================= */
+
+let velocidadeY = 0;
+
+const gravidade = 0.6;
+
+const forcaPulo = 15;
+
+const velocidade = 5;
+
+
+/* =========================
+   CONTROLES
+========================= */
+
+let esquerda = false;
+
+let direita = false;
+
+let noChao = true;
+
+let terminou = false;
+
+
+/* =========================
+   TECLADO
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === "d" ||
+            event.key === "D"
+        ) {
+
+            direita = true;
+
+            event.preventDefault();
+
+        }
+
+
+        if (
+            event.key === "ArrowLeft" ||
+            event.key === "a" ||
+            event.key === "A"
+        ) {
+
+            esquerda = true;
+
+            event.preventDefault();
+
+        }
+
+
+        if (
+            event.code === "Space" ||
+            event.key === "ArrowUp" ||
+            event.key === "w" ||
+            event.key === "W"
+        ) {
+
+            if (noChao) {
+
+                velocidadeY = forcaPulo;
+
+                noChao = false;
+
+            }
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SOLTAR TECLA
+========================= */
+
+document.addEventListener(
+    "keyup",
+    function(event) {
+
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === "d" ||
+            event.key === "D"
+        ) {
+
+            direita = false;
+
+        }
+
+
+        if (
+            event.key === "ArrowLeft" ||
+            event.key === "a" ||
+            event.key === "A"
+        ) {
+
+            esquerda = false;
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MORRER
+========================= */
+
+function morrer() {
+
+    x = 70;
+
+    y = 80;
+
+    velocidadeY = 0;
+
+    noChao = true;
+
+}
+
+
+/* =========================
+   COLISÕES
+========================= */
+
+function verificarColisoes() {
+
+    let pousou = false;
+
+
+    const esquerdaPersonagem = x;
+
+    const direitaPersonagem = x + 45;
+
+    const yAnterior =
+        y - velocidadeY;
+
+
+    plataformas.forEach(
+        function(plataforma) {
+
+
+            const esquerdaPlataforma =
+                plataforma.offsetLeft;
+
+            const direitaPlataforma =
+                esquerdaPlataforma +
+                plataforma.offsetWidth;
+
+
+            const topoPlataforma =
+                window.innerHeight -
+                plataforma.offsetTop;
+
+
+            const bateuHorizontal =
+                direitaPersonagem >
+                esquerdaPlataforma &&
+                esquerdaPersonagem <
+                direitaPlataforma;
+
+
+            const estavaAcima =
+                yAnterior >=
+                topoPlataforma;
+
+
+            const chegouNaPlataforma =
+                y <= topoPlataforma &&
+                y >= topoPlataforma - 20;
+
+
+            if (
+                bateuHorizontal &&
+                velocidadeY <= 0 &&
+                estavaAcima &&
+                chegouNaPlataforma
+            ) {
+
+                y = topoPlataforma;
+
+                velocidadeY = 0;
+
+                pousou = true;
+
+            }
+
+        }
+    );
+
+
+    /* pousou */
+
+    if (pousou) {
+
+        noChao = true;
+
+        return;
+
+    }
+
+
+    /* chão */
+
+    if (y <= 80) {
+
+        if (noChao) {
+
+            y = 80;
+
+            velocidadeY = 0;
+
+        } else {
+
+            morrer();
+
+        }
+
+    } else {
+
+        noChao = false;
+
+    }
+
+}
+
+
+/* =========================
+   LOOP DO JOGO
+========================= */
+
+function atualizar() {
+
+
+    if (terminou) {
+        return;
+    }
+
+
+    /* movimento */
+
+    if (direita) {
+
+        x += velocidade;
+
+    }
+
+
+    if (esquerda) {
+
+        x -= velocidade;
+
+    }
+
+
+    /* limite esquerdo */
+
+    if (x < 0) {
+
+        x = 0;
+
+    }
+
+
+    /* limite direito */
+
+    if (
+        x >
+        window.innerWidth - 60
+    ) {
+
+        x =
+            window.innerWidth - 60;
+
+    }
+
+
+    /* gravidade */
+
+    velocidadeY -= gravidade;
+
+    y += velocidadeY;
+
+
+    /* colisões */
+
+    verificarColisoes();
+
+
+    /* aplicar posição */
+
+    personagem.style.left =
+        x + "px";
+
+    personagem.style.bottom =
+        y + "px";
+
+
+    /* chegou ao final */
+
+    if (
+        x >
+        window.innerWidth - 130
+    ) {
+
+        terminou = true;
+
+        telaFinal.style.display =
+            "flex";
+
+    }
+
+
+    requestAnimationFrame(
+        atualizar
+    );
+
+}
+
+
+/* COMEÇAR */
+
+atualizar();
+
+
+</script>
+
+
+</body>
+
+</html>

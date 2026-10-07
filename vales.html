@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Meus vales ♡</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #090909,
+                    #180008,
+                    #090909
+                );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            padding: 60px 20px;
+        }
+
+
+        .container {
+
+            width: 90%;
+            max-width: 850px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+
+        .subtitulo {
+
+            color: #c4002f;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+
+        h1 {
+
+            font-size: 35px;
+
+            font-weight: normal;
+
+            margin-bottom: 12px;
+        }
+
+
+        .descricao {
+
+            color: #999;
+
+            font-size: 15px;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* VALeS */
+
+        .vales {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .vale {
+
+            position: relative;
+
+            padding: 30px 25px;
+
+            background: #111;
+
+            border: 1px solid #292929;
+
+            text-align: left;
+
+            transition: 0.3s;
+
+            overflow: hidden;
+        }
+
+
+        .vale::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 4px;
+            height: 100%;
+
+            background: #a50022;
+        }
+
+
+        .vale:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #a50022;
+
+            box-shadow:
+                0 10px 30px
+                rgba(165, 0, 34, 0.15);
+        }
+
+
+        .icone {
+
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .vale h2 {
+
+            font-size: 19px;
+
+            font-weight: normal;
+
+            margin-bottom: 10px;
+        }
+
+
+        .vale p {
+
+            color: #999;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        .botao {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 8px 15px;
+
+            border: 1px solid #a50022;
+
+            color: #d93656;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            transition: 0.3s;
+        }
+
+
+        .botao:hover {
+
+            background: #a50022;
+
+            color: white;
+        }
+
+
+        .voltar {
+
+            display: inline-block;
+
+            margin-top: 45px;
+
+            color: #777;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+
+        .voltar:hover {
+
+            color: white;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .vales {
+
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <p class="subtitulo">
+        pequenos presentes para você
+    </p>
+
+
+    <h1>
+        seus vales ♡
+    </h1>
+
+
+    <p class="descricao">
+        Todos tem uma data de vencimento de: 670.690 anos
+        Use o mais rápido que puder!
+    </p>
+
+
+    <div class="vales">
+
+
+        <!-- VALE ABRAÇO -->
+
+        <div class="vale">
+
+            <div class="icone">
+                🫂
+            </div>
+
+            <h2>
+                Vale Abraço
+            </h2>
+
+            <p>
+                Vale um abraço bem apertado,
+                quentinho, e com cheirinho.
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                usar vale ♡
+
+            </a>
+
+        </div>
+
+
+        <!-- VALE BEIJO -->
+
+        <div class="vale">
+
+            <div class="icone">
+                💋
+            </div>
+
+            <h2>
+                Vale Beijo
+            </h2>
+
+            <p>
+                Vale um beijo meu.
+                A quantidade fica por conta
+                da pessoa que estiver recebendo.
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                usar vale ♡
+
+            </a>
+
+        </div>
+
+
+        <!-- VALE CARINHO -->
+
+        <div class="vale">
+
+            <div class="icone">
+                🫶
+            </div>
+
+            <h2>
+                Vale Carinho
+            </h2>
+
+            <p>
+                Vale cafuné, carinho,
+                ficar juntinho e todas as
+                melosidades que meu neném quiser.
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                usar vale ♡
+
+            </a>
+
+        </div>
+
+
+        <!-- VALE RECLAMAÇÃO -->
+
+        <div class="vale">
+
+            <div class="icone">
+                🌙
+            </div>
+
+            <h2>
+                Vale Reclamação
+            </h2>
+
+            <p>
+                Vale uma reclamação, sobre qualquer
+                coisa, sem interrupção.
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                usar vale ♡
+
+            </a>
+
+        </div>
+
+
+        <!-- VALE ESPECIAL -->
+
+        <div class="vale">
+
+            <div class="icone">
+                💌
+            </div>
+
+            <h2>
+                Vale Pedido Especial
+            </h2>
+
+            <p>
+                Esse vale pode ser trocado
+                por qualquer coisa.
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                usar vale ♡
+
+            </a>
+
+        </div>
+
+
+        <!-- VALE INFINITO -->
+
+        <div class="vale">
+
+            <div class="icone">
+                ♾️
+            </div>
+
+            <h2>
+                Vale Amor
+            </h2>
+
+            <p>
+                Esse não precisa ser usado.
+                É permanente e não possui
+                data de validade. ♡
+            </p>
+
+            <a
+                href="#"
+                class="botao">
+
+                guardar ♡
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <a
+        href="lov2.html"
+        class="voltar">
+
+        ← voltar
+
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
